@@ -1,7 +1,7 @@
-package Rabin_Karp;
+package traisangphai.Rabin_Karp;
 
 //https://nhannguyen95.github.io/rabin-karp-algorithm/
-public class Main {
+public class Demo_Rabin_Karp {
     static final int BASE = 3;
     static final int PRIME = 517;
     static long valueCurrent;
