@@ -1,4 +1,4 @@
-package traisangphai.QuickSearch;
+package phaisangtrai.QuickSearch;
 
 public class Demo_Quick_Search {
     public static int[] preQsBc(char[] x) {

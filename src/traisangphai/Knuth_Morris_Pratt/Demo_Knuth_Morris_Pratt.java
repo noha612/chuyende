@@ -1,7 +1,7 @@
 package traisangphai.Knuth_Morris_Pratt;
 
 public class Demo_Knuth_Morris_Pratt {
-    static String pattern = "ABABCABAB";
+    static String pattern = "AAAABCADE";
     static String text = "ABABDABACDABABCABAB";
     static int[] kmpNext = new int[pattern.length()];
 
