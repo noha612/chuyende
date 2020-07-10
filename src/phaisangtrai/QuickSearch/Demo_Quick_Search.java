@@ -1,6 +1,13 @@
 package phaisangtrai.QuickSearch;
 
 public class Demo_Quick_Search {
+
+    public static void main(String[] args) {
+        char[] x = "AAA".toCharArray();
+        char[] y = "AAAAAAA".toCharArray();
+        searchQuickSearch(x, y);
+    }
+
     public static int[] preQsBc(char[] x) {
         int[] bc = new int[255];
         int m = x.length;
@@ -13,18 +20,15 @@ public class Demo_Quick_Search {
         return bc;
     }
 
-    public static void search(char[] x, char[] y) {
+    public static void searchQuickSearch(char[] x, char[] y) {
         int m = x.length;
         int n = y.length;
         int[] preBc = preQsBc(x);
-        for(int i : preBc){
-            if(i!=9)System.out.print(i+" ");
-        }
         System.out.println();
         int i = 0;
         while (i <= n - m) {
             if (cmp(x, y, i)) {
-                System.out.println("Các vị trí xuất hiện trong văn bản của xâu mẫu là: " + i);
+                System.out.println("index: " + i);
             }
             i = i + preBc[y[i + m]];
         }
@@ -37,11 +41,5 @@ public class Demo_Quick_Search {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        char[] x = "AAA".toCharArray();
-        char[] y = "AAAAAAA".toCharArray();
-        search(x, y);
     }
 }

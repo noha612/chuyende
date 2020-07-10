@@ -1,13 +1,15 @@
 package traisangphai.Knuth_Morris_Pratt;
 
 public class Demo_Knuth_Morris_Pratt {
-    static String pattern = "AAAABCADE";
-    static String text = "ABABDABACDABABCABAB";
-    static int[] kmpNext = new int[pattern.length()];
 
     public static void main(String[] args) {
-        preKMP();
-        for (int i : kmpNext) System.out.print(i + " ");
+        String pattern = "ABCABAB";
+        String text = "ABABDABACDABABCABAB";
+        searchKMP(pattern, text);
+    }
+
+    static void searchKMP(String pattern, String text) {
+        int[] kmpNext = preKMP(pattern);
         int i = 0;
         int j = 0;
         while (i < text.length()) {
@@ -27,7 +29,8 @@ public class Demo_Knuth_Morris_Pratt {
         }
     }
 
-    static void preKMP() {
+    static int[] preKMP(String pattern) {
+        int[] kmpNext = new int[pattern.length()];
         int i = 0;
         int len = i;
         kmpNext[i] = len;
@@ -47,5 +50,6 @@ public class Demo_Knuth_Morris_Pratt {
                 }
             }
         }
+        return kmpNext;
     }
 }
