@@ -3,8 +3,8 @@ package phaisangtrai.Boyer_Moore;
 public class Demo_Boyer_Moore {
 
     public static void main(String[] args) {
-        char[] x = "AAA".toCharArray();
-        char[] y = "AAAAAAA".toCharArray();
+        char[] x = "ABCABAB".toCharArray();
+        char[] y = "ABABDABACDABABCABAB".toCharArray();
         searchBM(x, y);
     }
 
@@ -19,7 +19,7 @@ public class Demo_Boyer_Moore {
 
     static void preBmGs(char[] x, int m, int bmGs[]) {
         int i, j;
-        int[] suff = new int[256];
+        int[] suff = new int[m];
 
 
         int f = 0, g, h;
@@ -38,6 +38,8 @@ public class Demo_Boyer_Moore {
             }
         }
 
+        for(int temp : suff) System.out.print(temp+" ");
+
 
         for (i = 0; i < m; ++i)
             bmGs[i] = m;
@@ -49,6 +51,8 @@ public class Demo_Boyer_Moore {
                         bmGs[j] = m - 1 - i;
         for (i = 0; i <= m - 2; ++i)
             bmGs[m - 1 - suff[i]] = m - 1 - i;
+        System.out.println();
+        for(int temp : bmGs) System.out.print(temp+" ");
     }
 
 
@@ -56,7 +60,7 @@ public class Demo_Boyer_Moore {
         int m = x.length;
         int n = y.length;
         int i, j;
-        int[] bmGs = new int[256];
+        int[] bmGs = new int[m];
         int[] bmBc = new int[256];
 
         preBmGs(x, m, bmGs);

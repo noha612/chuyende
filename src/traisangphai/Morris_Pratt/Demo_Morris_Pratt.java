@@ -1,18 +1,18 @@
-package traisangphai.Knuth_Morris_Pratt;
+package traisangphai.Morris_Pratt;
 
-public class Demo_Knuth_Morris_Pratt {
+public class Demo_Morris_Pratt {
 
     public static void main(String[] args) {
 //        String pattern = "ABCABAB";
         String pattern = "ABABCABAB";
         String text = "ABABDABACDABABCABAB";
 //        String text = "GCATCGCAGAGAGTATACAGTACG";
-        searchKMP(pattern, text);
+        searchMP(pattern, text);
     }
 
-    static void searchKMP(String pattern, String text) {
-        int[] kmpNext = preKMP(pattern);
-        for (int i : kmpNext) System.out.print(i + " ");
+    static void searchMP(String pattern, String text) {
+        int[] mpNext = preMP(pattern);
+        for (int i : mpNext) System.out.print(i + " ");
         int i = 0;
         int j = 0;
         while (i < text.length()) {
@@ -22,9 +22,9 @@ public class Demo_Knuth_Morris_Pratt {
             }
             if (j == pattern.length()) {
                 System.out.println("index : " + (i - j));
-                j = kmpNext[j - 1];
+                j = mpNext[j - 1];
             } else if (i < text.length() && text.charAt(i) != pattern.charAt(j)) {
-                if (j != 0) j = kmpNext[j - 1];
+                if (j != 0) j = mpNext[j - 1];
                 else {
                     i++;
                 }
@@ -32,30 +32,27 @@ public class Demo_Knuth_Morris_Pratt {
         }
     }
 
-    static int[] preKMP(String pattern) {
-        int[] kmpNext = new int[pattern.length()];
+    static int[] preMP(String pattern) {
+        int[] mpNext = new int[pattern.length()];
         int i = 0;
         int len = i;
-        kmpNext[i] = len;
+        mpNext[i] = len;
         i++;
         char[] X = pattern.toCharArray();
-        while (i < kmpNext.length) {
+        while (i < mpNext.length) {
             if (X[i] == X[len]) {
                 len++;
-                kmpNext[i] = len;
-                if (i < X.length - 1 && X[i + 1] == X[len]) {
-                    kmpNext[i] = kmpNext[len];
-                }
+                mpNext[i] = len;
                 i++;
             } else {
                 if (len != 0) {
-                    len = kmpNext[len - 1];
+                    len = mpNext[len - 1];
                 } else {
-                    kmpNext[len] = 0;
+                    mpNext[len] = 0;
                     i++;
                 }
             }
         }
-        return kmpNext;
+        return mpNext;
     }
 }

@@ -11,8 +11,9 @@ public class Demo_Apostolico_Crochemore {
         int m = x.length;
         int n = y.length;
         int i, j, k, ell;
-        int[] kmpNext = new int[265];
+        int[] kmpNext = new int[m+1];
         preKmp(x, m, kmpNext);
+        for(int h : kmpNext) System.out.print(h+" ");
 
         for (ell = 1; x[ell - 1] == x[ell]; ) ell++;
         if (ell == m) ell = 0;
